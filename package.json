@@ -1,0 +1,19 @@
+{
+  "name": "kvd-react",
+  "version": "1.0.0",
+  "description": "This is react practice app for recall react",
+  "main": "App.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com:dathatreyakv/kvd-react.git"
+  },
+  "keywords": [],
+  "author": "Dathatreya KV",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  }
+}
