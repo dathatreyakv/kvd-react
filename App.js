@@ -8,10 +8,22 @@ import ReactDOM from "react-dom/client";
 * React.createElement => creates ReactElement JS object
 * JS object => ReactDOM renders this objects as HTML DOM elements
 */
-const Title = () => <h1>Sample Title</h1>;
+
+const Title1 = () => <h1>Arrow function component - Sample Title1</h1>;
+
+const Title2 = function () {
+  return <h2>Anonymus function component - Sample Title2</h2>;
+}
+
+function Title3() {
+  return <h3>Regular function component - Sample Title3</h3>
+}
+
 const HeaderComponent = () => <>
-  <Title />
-  <h2>Subtile from Header HeaderComponent</h2>
+  <Title1/>
+  <Title2/>
+  <Title3/>
+  <h4>Small Subtile from HeaderComponent</h4>
 </>
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
