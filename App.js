@@ -9,20 +9,12 @@ import ReactDOM from "react-dom/client";
 * JS object => ReactDOM renders this objects as HTML DOM elements
 */
 
-const Title1 = () => <h1>Arrow function component - Sample Title1</h1>;
-
-const Title2 = function () {
-  return <h2>Anonymus function component - Sample Title2</h2>;
-}
-
-function Title3() {
-  return <h3>Regular function component - Sample Title3</h3>
-}
+const Title1 = () => <h1>Arrow function component</h1>;
+const titleElement = <h2>Tile ELEMENT</h2>
 
 const HeaderComponent = () => <>
   <Title1/>
-  <Title2/>
-  <Title3/>
+  {titleElement}
   <h4>Small Subtile from HeaderComponent</h4>
 </>
 
