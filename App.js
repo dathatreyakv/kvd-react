@@ -13,7 +13,8 @@ const Title1 = () => <h1>Arrow function component</h1>;
 const titleElement = <h2>Tile ELEMENT</h2>
 
 const HeaderComponent = () => <>
-  <Title1/>
+  <Title1> </Title1>
+  {Title1()}
   {titleElement}
   <h4>Small Subtile from HeaderComponent</h4>
 </>
