@@ -33,12 +33,22 @@ const Header = () => (
   </div>
 )
 
-const RestaurantCard = ({logo, name, description = ''}) => (
+const restaurants = [{
+  name: 'Megana Foods',
+  specials: 'Biryani, North Indian, Asian',
+  rating: '4.3 Star',
+  delivery_time: '38 minutes',
+  logo: 'https://b.zmtcdn.com/data/pictures/3/93043/b4f8daac26d882ac8c0961932ba0b4a4_featured_v2.jpg',
+  description: 'Restaurant Description'
+}]
+const RestaurantCard = ({logo, name, specials, rating, delivery_time}) => (
   <div className="res-card" style={{backgroundColor: '#F0F0F0'}}>
-    <img className="restaurant-image" height="50%" width="100%" src={logo}/>
+    <img className="restaurant-image" src={logo}/>
     <div className="restaurant-info">
-      <h2>{name}</h2>
-      <p>{description}</p>
+      <h3>{name}</h3>
+      <h4>{specials}</h4>
+      <h4>{rating}</h4>
+      <h4>{delivery_time}</h4>
     </div>
   </div>
 )
@@ -50,8 +60,7 @@ const Body = () => (
       Search
     </div>
     <div className="restaurant-container">
-      <RestaurantCard logo="https://www.logodesign.net/logo/smoking-burger-with-letuce-3624ld.png"
-        name="Restaurant Name" description="Restaurant Description" />
+      <RestaurantCard {...restaurants[0]}/>
     </div>
   </div>
 )
