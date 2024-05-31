@@ -28,7 +28,13 @@
   width: 230px;
   height: 350px;
   border: 1px solid '#F0F0F0';
-  padding-left: 5px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.restaurant-container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .res-card:hover {
