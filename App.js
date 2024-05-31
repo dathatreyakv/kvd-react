@@ -17,9 +17,6 @@ import ReactDOM from "react-dom/client";
  *
  *  */
 
-const styleCard = {
-  backgroundColor: '#F0F0F0',
-}
 const Header = () => (
   <div className="header">
     <div className="logoContainer">
@@ -37,7 +34,7 @@ const Header = () => (
 )
 
 const RestaurantCard = ({logo, name, description = ''}) => (
-  <div className="res-card" style={styleCard}>
+  <div className="res-card" style={{backgroundColor: '#F0F0F0'}}>
     <img className="restaurant-image" height="50%" width="100%" src={logo}/>
     <div className="restaurant-info">
       <h2>{name}</h2>
