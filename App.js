@@ -16,6 +16,10 @@ import ReactDOM from "react-dom/client";
  *  - Address
  *
  *  */
+
+const styleCard = {
+  backgroundColor: '#F0F0F0',
+}
 const Header = () => (
   <div className="header">
     <div className="logoContainer">
@@ -32,11 +36,33 @@ const Header = () => (
   </div>
 )
 
+const RestaurantCard = ({logo, name, description = ''}) => (
+  <div className="res-card" style={styleCard}>
+    <img className="restaurant-image" height="50%" width="100%" src={logo}/>
+    <div className="restaurant-info">
+      <h2>{name}</h2>
+      <p>{description}</p>
+    </div>
+  </div>
+)
+
+const Body = () => (
+  <div className="body">
+    <div className="search">
+      <input type="text" placeholder="Search Restaurants"/>
+      Search
+    </div>
+    <div className="restaurant-container">
+      <RestaurantCard logo="https://www.logodesign.net/logo/smoking-burger-with-letuce-3624ld.png"
+        name="Restaurant Name" description="Restaurant Description" />
+    </div>
+  </div>
+)
+
 const AppLayout = () => (
   <div className="app">
     <Header/>
-    {/* <Body/> */}
-    {/* <Footer/> */}
+    <Body/>
   </div>
 );
 const root = ReactDOM.createRoot(document.getElementById('root'));

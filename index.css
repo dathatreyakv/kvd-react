@@ -20,3 +20,16 @@
   padding: 10px;
   margin: 10px;
 }
+
+.search {
+  padding: 10px;
+}
+.res-card {
+  width: 200px;
+  height: 300px;
+  border: 1px solid black;
+}
+
+/* .res-card > .restaurant-info {
+  align-content: center;
+} */
