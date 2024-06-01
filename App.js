@@ -1920,7 +1920,7 @@ const Body = () => (
       Search
     </div>
     <div className="restaurant-container">
-      {  restaurants.map((restaurant) => <RestaurantCard data={restaurant}/>) }
+      {  restaurants.map((restaurant) => <RestaurantCard key={restaurant?.info?.id} data={restaurant}/>) }
     </div>
   </div>
 )
