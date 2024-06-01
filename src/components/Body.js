@@ -1,37 +1,5 @@
-// App.js
-import React from "react";
-import ReactDOM from "react-dom/client";
+import RestaurantCard from "./RestaurantCard";
 
-/**
- * - Header
- *  - Logo
- *  - Navigation Items
- * - Body Container
- *  - SearchRestaurants
- *  - RestaurantContainer
- *    - RestaurantCard
- * - Footer
- *  - Copyright
- *  - License
- *  - Address
- *
- *  */
-
-const Header = () => (
-  <div className="header">
-    <div className="logoContainer">
-      <img className="logo" src="https://www.logodesign.net/logo/smoking-burger-with-letuce-3624ld.png"/>
-    </div>
-    <div className="nav-items">
-      <ul>
-        <li>Home</li>
-        <li>About Us</li>
-        <li>Contact Us</li>
-        <li>Cart</li>
-      </ul>
-    </div>
-  </div>
-)
 const restaurants = [
   {
     "info": {
@@ -1898,21 +1866,6 @@ const restaurants = [
   }
 ]
 
-const RestaurantCard = (props) => {
-  if(!props) return null;
-  const {name, costForTwo, cuisines, avgRatingString, cloudinaryImageId, sla} = props?.data?.info;
-  return <div className="res-card" style={{backgroundColor: '#F0F0F0'}}>
-    <img className="restaurant-image" src={'https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/'+cloudinaryImageId}/>
-    <div className="restaurant-info">
-      <h3>{name}</h3>
-      <h4>{cuisines.join(', ')}</h4>
-      <h4>{costForTwo}</h4>
-      <h4>{avgRatingString} Star</h4>
-      <h4>{sla.slaString}</h4>
-    </div>
-  </div>
-}
-
 const Body = () => (
   <div className="body">
     <div className="search">
@@ -1925,11 +1878,4 @@ const Body = () => (
   </div>
 )
 
-const AppLayout = () => (
-  <div className="app">
-    <Header/>
-    <Body/>
-  </div>
-);
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<AppLayout />);
+export default Body;
