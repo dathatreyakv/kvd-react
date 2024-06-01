@@ -49,8 +49,9 @@ const restaurants = [{
   description: 'Restaurant Description'
 }]
 
-const RestaurantCard = ({logo, name, specials, rating, delivery_time}) => (
-  <div className="res-card" style={{backgroundColor: '#F0F0F0'}}>
+const RestaurantCard = (props) => {
+  const {logo, name, specials, rating, delivery_time} = props;
+  return <div className="res-card" style={{backgroundColor: '#F0F0F0'}}>
     <img className="restaurant-image" src={logo}/>
     <div className="restaurant-info">
       <h3>{name}</h3>
@@ -59,7 +60,7 @@ const RestaurantCard = ({logo, name, specials, rating, delivery_time}) => (
       <h4>{delivery_time}</h4>
     </div>
   </div>
-)
+}
 
 const Body = () => (
   <div className="body">
@@ -68,8 +69,14 @@ const Body = () => (
       Search
     </div>
     <div className="restaurant-container">
-      {restaurants.map((restaurant) => (
-        <RestaurantCard {...restaurant}/>
+      {restaurants.map((r) => (
+        <RestaurantCard
+          logo={r.logo}
+          name={r.name} 
+          specials={r.specials}
+          rating={r.rating}
+          delivery_time={r.delivery_time}
+        />
       ))}
     </div>
   </div>
