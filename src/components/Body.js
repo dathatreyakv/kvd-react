@@ -5,9 +5,14 @@ import RestaurantCard from "./RestaurantCard";
 import {useEffect, useRef, useState} from "react";
 
 const Body = () => {
-  let restaurantsList = useRef([]);
+  // let [searchTxt, setSearchTxt] = useState('');
+  let searchTxt = useRef('');
+  let restaurantsList = useRef((() => {console.log("List State Triggered"); return []})());
   const [restaurants , setRestaurants] = useState([]);
   
+  function filterRestaurantByName() {
+    setRestaurants(restaurantsList.current.filter((restaurant) => restaurant?.info?.name.toLowerCase().includes(searchTxt.current.toLowerCase())) )
+  }
   function filterTopRatedRestaurants() {
     setRestaurants(restaurantsList.current.filter((restaurant) => restaurant?.info?.avgRating >= 4) )
   }
@@ -26,14 +31,13 @@ const Body = () => {
      .catch((error) => console.log(error));
   }
 
-  if(!restaurantsList?.current?.length) {
-    return <BodyShimmer/>
-  }
-  return <div className="body">
+  // Conditional Rendering
+  return !restaurantsList?.current?.length ? <BodyShimmer/> :
+  <div className="body">
     <div className="data-filters">
       <div className="search">
-        <input type="text" placeholder="Search Restaurants"/>
-        Search
+        <input type="text" placeholder="Search Restaurants" onChange={(e) => {searchTxt.current = e.target.value}}/>
+        <button type="button" onClick={(() => {console.log("Function Invoked"); return filterRestaurantByName})() }>Search</button>
       </div>
       <button type="button" className="btn btn-rating-filter" onClick={filterTopRatedRestaurants}>Top rated Restaurants</button>
     </div>

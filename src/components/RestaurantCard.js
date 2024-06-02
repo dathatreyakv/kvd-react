@@ -1,6 +1,7 @@
 import { SWIGGY_ASSET_URL } from "../utils/constants";
 
 const RestaurantCard = (props) => {
+  console.log("RestaurantCard rendered");
   if(!props) return null;
   const {name, costForTwo, cuisines, avgRatingString, cloudinaryImageId, sla} = props?.data?.info;
   return <div className="res-card">

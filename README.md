@@ -83,3 +83,8 @@ We have 2 types of import & export process
 
   useRef:
     It allows you to create a persistent reference to a value across renders, without causing re-renders when its value changes. It's commonly used to reference DOM elements and to store mutable variables in function components.
+
+
+> Fiber is a new reconciliation engine in React 16.
+
+- When state variable changes React reconciliation will re-create the new virtual DOM of that React Element - and compares with the old virtual DOM. If it find any difference  then it will re-render that perticular part in original DOM and ignore the remaining unchanged part.
