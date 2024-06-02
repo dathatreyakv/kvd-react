@@ -1,7 +1,7 @@
 // App.js
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Header from "./components/Header";
+import Header from "./components/Header.js";
 import Body from "./components/Body";
 
 

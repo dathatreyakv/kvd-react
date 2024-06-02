@@ -1,7 +1,9 @@
-const Header = () => (
+import { LOGO_URL } from "../utils/constants";
+
+export default Header = () => (
   <div className="header">
     <div className="logoContainer">
-      <img className="logo" src="https://www.logodesign.net/logo/smoking-burger-with-letuce-3624ld.png"/>
+      <img className="logo" src={LOGO_URL}/>
     </div>
     <div className="nav-items">
       <ul>
@@ -14,4 +16,3 @@ const Header = () => (
   </div>
 )
 
-export default Header;
