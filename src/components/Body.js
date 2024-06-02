@@ -1,4 +1,5 @@
 import { RESTAURANT_DATA_URL } from "../utils/constants";
+import BodyShimmer from "./BodyShimmer";
 // import restaurantsList from "../utils/mockData";
 import RestaurantCard from "./RestaurantCard";
 import {useEffect, useRef, useState} from "react";
@@ -26,7 +27,7 @@ const Body = () => {
   }
 
   if(!restaurantsList?.current?.length) {
-    return <h2>Data Loading....</h2>
+    return <BodyShimmer/>
   }
   return <div className="body">
     <div className="data-filters">
@@ -36,8 +37,6 @@ const Body = () => {
       </div>
       <button type="button" className="btn btn-rating-filter" onClick={filterTopRatedRestaurants}>Top rated Restaurants</button>
     </div>
-    
-
     <div className="restaurant-container">
       {  restaurants.map((restaurant) => <RestaurantCard key={restaurant?.info?.id} data={restaurant}/>) }
     </div>
