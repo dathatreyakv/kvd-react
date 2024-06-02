@@ -1,14 +1,33 @@
-import restaurantsList from "../utils/mockData";
+import { RESTAURANT_DATA_URL } from "../utils/constants";
+// import restaurantsList from "../utils/mockData";
 import RestaurantCard from "./RestaurantCard";
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 const Body = () => {
-  const [restaurants , setRestaurants] = useState(restaurantsList);
-
+  let restaurantsList = useRef([]);
+  const [restaurants , setRestaurants] = useState([]);
+  
   function filterTopRatedRestaurants() {
-    setRestaurants(restaurantsList.filter((restaurant) => restaurant?.info?.avgRating >= 4.5) )
+    setRestaurants(restaurantsList.current.filter((restaurant) => restaurant?.info?.avgRating >= 4) )
   }
 
+  useEffect(fetchRestaurantsData, []);
+  function fetchRestaurantsData() {
+    fetch(RESTAURANT_DATA_URL)
+     .then((response) => response.json())
+     .then((data) => {
+      console.log('REQUEST TRIGGERED----')
+      data = data.data.cards.find((r) => r?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+      restaurantsList.current = data.card?.card?.gridElements?.infoWithStyle?.restaurants
+
+      setRestaurants(restaurantsList.current)
+    })
+     .catch((error) => console.log(error));
+  }
+
+  if(!restaurantsList?.current?.length) {
+    return <h2>Data Loading....</h2>
+  }
   return <div className="body">
     <div className="data-filters">
       <div className="search">
