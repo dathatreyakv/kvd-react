@@ -99,6 +99,15 @@ We have 2 types of import & export process
     When state variable changes React reconciliation will re-create the new virtual DOM of that React Element - and compares with the old virtual DOM. If it find any difference  then it will re-render that perticular part in original DOM and ignore the remaining unchanged part.
 
 --------------
-## [React Router](https://reactrouter.com/en/main)
+## [React Router](https://reactrouter.com/en/main) - react-router-dom package
 
+  - createBrowserRouter()
+    - This takes the array of objects with the format as{path:'/', element: \<App\/\>, errorElement(optional):\<Error\/\>, children(optional): [{path: '/about', element: \<About/\>}]} input, and generates react element
+  - RouterProvider
+    - Above generate react element passed to this compoent and sets on root render
+  - Outlet
+  - useRouteError
+  - Link
 
+* 'react-router-dom's Link:
+    > anchor(\<a href=""\>) tag will reload the whole page again to the given href link, where 'react-router-dom's Link component(\<Link to=""\>) will refresh the virtual DOM and load the changed content by changing the URL without refreshing the whole page.
