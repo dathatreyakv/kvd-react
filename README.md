@@ -61,11 +61,19 @@ We have 2 types of import & export process
   <b>Curly braces</b> are mandatory for importing the non-default variables/components.
   Must not be used with the default variables/components.
 
-  useState:
+## Hooks
+1. Hooks always has to call inside component function, if try to call the hooks outside function it'll throw error
+2. Don't create state variables or Don't call hooks inside the if-else blocks
+3. 
+## [useState](https://react.dev/reference/react/useState):
     A React hook that allows you to add state to functional components in order to manage and update data within the component.
-  useEffect:
-    is a hook in React that allows you to perform side effects in function components, such as data fetching, subscriptions, or manual DOM manipulations. It runs after every render by default, but can be optimized to run only when certain values have changed.
-    
+## [useEffect](https://react.dev/reference/react/useEffect):
+    This allows you to perform side effects in function components, such as data fetching, subscriptions, or manual DOM manipulations. It runs after every render by default, but can be optimized to run only when certain values have changed.
+    Note: This'll trigger on first rendering
+  1. If no dependency array is provided, then useEffect will call on every time the component renders
+  2. If dependency array is empty([]) => then useEffect will trigger only for first rendering.
+  3. If dependency array is have some values ([btnText, dataList]) => then useEffect will trigger on change of mentioned values(btnText, dataList).
+```ruby
     useEffect(() => {
       const fetchData = async () => {
         try {
@@ -79,12 +87,18 @@ We have 2 types of import & export process
 
       fetchData();
     }, []);
-    
+```
 
-  useRef:
+## [useRef](https://react.dev/reference/react/useRef):
     It allows you to create a persistent reference to a value across renders, without causing re-renders when its value changes. It's commonly used to reference DOM elements and to store mutable variables in function components.
 
 
+## [React Fiber](https://github.com/acdlite/react-fiber-architecture)
 > Fiber is a new reconciliation engine in React 16.
 
-- When state variable changes React reconciliation will re-create the new virtual DOM of that React Element - and compares with the old virtual DOM. If it find any difference  then it will re-render that perticular part in original DOM and ignore the remaining unchanged part.
+    When state variable changes React reconciliation will re-create the new virtual DOM of that React Element - and compares with the old virtual DOM. If it find any difference  then it will re-render that perticular part in original DOM and ignore the remaining unchanged part.
+
+--------------
+## [React Router](https://reactrouter.com/en/main)
+
+
