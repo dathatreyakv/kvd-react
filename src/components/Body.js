@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { RESTAURANTS_DATA_URL } from "../utils/constants";
 import BodyShimmer from "./BodyShimmer";
 // import restaurantsList from "../utils/mockData";
@@ -42,7 +43,9 @@ const Body = () => {
       <button type="button" className="btn btn-rating-filter" onClick={filterTopRatedRestaurants}>Top rated Restaurants</button>
     </div>
     <div className="restaurant-container">
-      {  restaurants.map((restaurant) => <RestaurantCard key={restaurant?.info?.id} data={restaurant}/>) }
+      {  restaurants.map((restaurant) => <Link to={'/restaurants/'+restaurant?.info?.id}>
+        <RestaurantCard key={restaurant?.info?.id} data={restaurant}/>
+      </Link>) }
     </div>
   </div>
 }
