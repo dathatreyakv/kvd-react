@@ -1,4 +1,4 @@
-import { RESTAURANT_DATA_URL } from "../utils/constants";
+import { RESTAURANTS_DATA_URL } from "../utils/constants";
 import BodyShimmer from "./BodyShimmer";
 // import restaurantsList from "../utils/mockData";
 import RestaurantCard from "./RestaurantCard";
@@ -19,7 +19,7 @@ const Body = () => {
 
   useEffect(fetchRestaurantsData, []);
   function fetchRestaurantsData() {
-    fetch(RESTAURANT_DATA_URL)
+    fetch(RESTAURANTS_DATA_URL)
      .then((response) => response.json())
      .then((data) => {
       console.log('REQUEST TRIGGERED----')
