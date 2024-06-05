@@ -1,8 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const User = (props) => {
   const [count,setCount] = useState(1)
   const increaseCount = () => setCount(count => count+1)
+
+  // useEffect(() => { getUserInfo() }, []);
+  // const getUserInfo = async () => {
+  //   const resp = await fetch('https://api.github.com/users/dathatreyakv');
+  //   const data = await resp.json();
+  //   console.log(data)
+  // }
   return (
     <div className="user-card">
       <h2>Count: {count}</h2>
