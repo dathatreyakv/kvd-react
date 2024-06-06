@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { GITHUB_PROFILE_URL } from "../utils/constants";
 
 const User = (props) => {
   const [count,setCount] = useState(1)
@@ -6,7 +7,7 @@ const User = (props) => {
 
   useEffect(() => { getUserInfo() }, []);
   const getUserInfo = async () => {
-    const resp = await fetch('https://api.github.com/users/dathatreyakv');
+    const resp = await fetch(GITHUB_PROFILE_URL);
     const data = await resp.json();
     return () => {
       console.log('returning function of useEffect will execute on unloading of the component');
