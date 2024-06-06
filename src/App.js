@@ -6,6 +6,12 @@ import Header from "./components/Header.js";
 import Body from "./components/Body";
 import Error from "./components/Error";
 
+// Chunking
+// Code Splitting
+// Dynamic bundling
+// Lazy loading
+// On demand loading
+// Dynamic import
 const About = lazy(()=> import("./components/About"));
 const ContactUs = lazy(()=> import("./components/ContactUs"));
 const RestaurantMenu = lazy(()=> import("./components/RestaurantMenu"));
