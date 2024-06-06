@@ -1,10 +1,12 @@
 import { useRef, useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
+import checkOnlineStatus from "../utils/checkOnlineStatus";
 
 export default Header = () => {
   const [btnName, setBtnName] = useState('Login');
   let counterRef = useRef(0);
+  let onlineStatus = checkOnlineStatus();
 
   function onBtnClick () {
     setBtnName(btnName == 'Login' ? 'Logout' : 'Login');
@@ -21,6 +23,7 @@ export default Header = () => {
     </div>
     <div className="nav-items">
       <ul>
+        <li>Online {onlineStatus ? "✅" : "❌"}</li>
         <li onClick={onLinkClick}><Link to="/">Home</Link></li>
         <li onClick={onLinkClick}><Link to="/about">About Us</Link></li>
         <li onClick={onLinkClick}><Link to="/contact">Contact Us</Link></li>
