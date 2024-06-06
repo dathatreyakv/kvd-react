@@ -4,12 +4,14 @@ const User = (props) => {
   const [count,setCount] = useState(1)
   const increaseCount = () => setCount(count => count+1)
 
-  // useEffect(() => { getUserInfo() }, []);
-  // const getUserInfo = async () => {
-  //   const resp = await fetch('https://api.github.com/users/dathatreyakv');
-  //   const data = await resp.json();
-  //   console.log(data)
-  // }
+  useEffect(() => { getUserInfo() }, []);
+  const getUserInfo = async () => {
+    const resp = await fetch('https://api.github.com/users/dathatreyakv');
+    const data = await resp.json();
+    return () => {
+      console.log('returning function of useEffect will execute on unloading of the component');
+    }
+  }
   return (
     <div className="user-card">
       <h2>Count: {count}</h2>
