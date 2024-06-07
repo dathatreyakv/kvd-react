@@ -17,18 +17,18 @@ export default Header = () => {
     console.log(counterRef.current);
   }
 
-  return <div className="header">
-    <div className="logoContainer">
-      <img className="logo" src={LOGO_URL}/>
+  return <div className="flex justify-between bg-pink-100 shadow-lg">
+    <div>
+      <img className="w-24 h-fit" src={LOGO_URL}/>
     </div>
-    <div className="nav-items">
-      <ul>
+    <div>
+      <ul className="flex p-4 m-4 items-center gap-4">
         <li>Online {onlineStatus ? "✅" : "❌"}</li>
         <li onClick={onLinkClick}><Link to="/">Home</Link></li>
         <li onClick={onLinkClick}><Link to="/about">About Us</Link></li>
         <li onClick={onLinkClick}><Link to="/contact">Contact Us</Link></li>
         <li onClick={onLinkClick}>Cart</li>
-        <button className="login-btn" onClick={onBtnClick}>{btnName}</button>
+        <button className="cursor-pointer bg-gray-400" onClick={onBtnClick}>{btnName}</button>
       </ul>
     </div>
   </div>

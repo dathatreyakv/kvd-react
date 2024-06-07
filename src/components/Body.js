@@ -39,14 +39,16 @@ const Body = () => {
 
   return !restaurantsList?.current?.length ? <BodyShimmer/> :
   <div className="body">
-    <div key="data-filters" className="data-filters">
-      <div className="search">
-        <input key="search-input" type="text" placeholder="Search Restaurants" onChange={(e) => {searchTxt.current = e.target.value}}/>
-        <button key="search-btn" type="button" onClick={(() => {console.log("Function Invoked"); return filterRestaurantByName})() }>Search</button>
+    <div className="flex pt-4">
+      <div className="pl-1 ml-2 mb-1">
+        <input className="border border-solid border-black" type="text" placeholder="Search Restaurants" onChange={(e) => {searchTxt.current = e.target.value}}/>
+        <button className="bg-green-100 px-4 py-0.5 m-4 rounded-sm" type="button" onClick={(() => {console.log("Function Invoked"); return filterRestaurantByName})() }>Search</button>
       </div>
-      <button type="button" className="btn btn-rating-filter" onClick={filterTopRatedRestaurants}>Top rated Restaurants</button>
+      <div className="ml-2 mb-1">
+        <button type="button" className="px-4 py-0.5 m-4 bg-gray-200 rounded-sm" onClick={filterTopRatedRestaurants}>Top rated Restaurants</button>
+      </div>
     </div>
-    <div key="restaurant-container" className="restaurant-container">
+    <div className="flex flex-wrap">
       {  restaurants.map((restaurant, indx) => <Link key={restaurant?.info?.id+'-'+indx} to={'/restaurants/'+restaurant?.info?.id}>
         <RestaurantCard data={restaurant}/>
       </Link>) }
