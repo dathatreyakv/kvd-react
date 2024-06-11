@@ -17,9 +17,9 @@ export default Header = () => {
     console.log(counterRef.current);
   }
 
-  return <div className="flex justify-between bg-pink-100 shadow-lg">
+  return <div className="flex justify-between bg-pink-100 shadow-lg sm:bg-green-100 lg:bg-blue-100">
     <div>
-      <img className="w-24 h-fit" src={LOGO_URL}/>
+      <img className="w-28 h-fit" src={LOGO_URL}/>
     </div>
     <div>
       <ul className="flex p-4 m-4 items-center gap-4">
@@ -28,7 +28,7 @@ export default Header = () => {
         <li onClick={onLinkClick}><Link to="/about">About Us</Link></li>
         <li onClick={onLinkClick}><Link to="/contact">Contact Us</Link></li>
         <li onClick={onLinkClick}>Cart</li>
-        <button className="cursor-pointer bg-gray-400" onClick={onBtnClick}>{btnName}</button>
+        <button className="cursor-pointer bg-gray-400 px-4 py-1" onClick={onBtnClick}>{btnName}</button>
       </ul>
     </div>
   </div>

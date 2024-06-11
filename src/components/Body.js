@@ -25,10 +25,8 @@ const Body = () => {
     fetch(RESTAURANTS_DATA_URL)
      .then((response) => response.json())
      .then((data) => {
-      console.log('REQUEST TRIGGERED----')
       data = data.data.cards.find((r) => r?.card?.card?.gridElements?.infoWithStyle?.restaurants)
       restaurantsList.current = data.card?.card?.gridElements?.infoWithStyle?.restaurants
-
       setRestaurants(restaurantsList.current)
     })
      .catch((error) => console.log(error));

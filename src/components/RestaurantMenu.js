@@ -1,21 +1,30 @@
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
+import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
   const {resId} = useParams();
+  const [urlParams] = useSearchParams();
   const resInfo = useRestaurantMenu(resId);
-
+  const [expandCategoryIndx, setExpandCategoryIndx] = useState(-1);
   if(!resInfo) return null;
   const {name, cuisines, avgRating, sla, costForTwoMessage} = resInfo?.cards[2]?.card?.card?.info;
-  const {itemCards} = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
+  const categories = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(grp => grp.card.card['@type'] === 'type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory');
 
   return (
-    <div className="menu">
-      <h1>{name}</h1>
-      <h3>{cuisines.join(', ')}</h3>
+    <div className="text-center">
+      <h1 className="font-bold text-2xl my-4">{name}</h1>
+      <h3 className="font-bold text-lg">{cuisines.join(', ')}</h3>
       <h3>{costForTwoMessage}</h3>
       <h2>Menu</h2>
-      <ul>
+      {
+        categories.map((category, indx) =>
+           <RestaurantCategory key={category?.card?.card.title} data={category?.card?.card}
+                               expand={indx===expandCategoryIndx}
+                               expandCategory={() => setExpandCategoryIndx(indx)}/>)
+      }
+      {/* <ul>
         {
           itemCards?.map((item, index) => {
             let info = item?.card?.info
@@ -23,7 +32,7 @@ const RestaurantMenu = () => {
             ₹{parseFloat(info.price || info.defaultPrice)/100.0}</li>
           })
         }
-      </ul>
+      </ul> */}
     </div>
   )
 }
