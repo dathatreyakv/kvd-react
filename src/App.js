@@ -1,10 +1,11 @@
 // App.js
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useContext, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Header from "./components/Header.js";
 import Body from "./components/Body";
 import Error from "./components/Error";
+import UserContext from "./utils/UserContext.js";
 
 // Chunking
 // Code Splitting
@@ -24,12 +25,23 @@ const lazyLoadSuspenseWrap = (Component, ...props) => (
   </Suspense>
 )
 
-const AppLayout = () => (
-  <div className="app">
-    <Header/>
-    <Outlet/>
-  </div>
-);
+const AppLayout = () => {
+  const [userName, setUserName] = useState("Default User");
+  useEffect(() => {
+    // login user details
+    const data = {name: "Venkata Dathatreya K"};
+    setUserName(data.name);
+  }, []);
+
+  return (
+    <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
+      <div className="app">
+        <Header/>
+        <Outlet/>
+      </div>
+    </UserContext.Provider>
+  )
+};
 
 const appRouter = createBrowserRouter([
   {

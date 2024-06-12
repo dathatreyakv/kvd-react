@@ -1,13 +1,14 @@
-import { useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import checkOnlineStatus from "../utils/checkOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 export default Header = () => {
   const [btnName, setBtnName] = useState('Login');
   let counterRef = useRef(0);
   let onlineStatus = checkOnlineStatus();
-
+  let {loggedInUser} = useContext(UserContext);
   function onBtnClick () {
     setBtnName(btnName == 'Login' ? 'Logout' : 'Login');
   }
@@ -28,7 +29,9 @@ export default Header = () => {
         <li onClick={onLinkClick}><Link to="/about">About Us</Link></li>
         <li onClick={onLinkClick}><Link to="/contact">Contact Us</Link></li>
         <li onClick={onLinkClick}>Cart</li>
+        
         <button className="cursor-pointer bg-gray-400 px-4 py-1" onClick={onBtnClick}>{btnName}</button>
+        <li className="font-bold">{loggedInUser}</li>
       </ul>
     </div>
   </div>

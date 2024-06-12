@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GITHUB_PROFILE_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
 const User = (props) => {
   const [userInfo, setUserInfo] = useState({name: 'Loading...',
-  location: '',
-  avatar_url: 'https://source.unsplash.com/user/c_v_r/1900x800'});
-  
+    location: '',
+    avatar_url: 'https://source.unsplash.com/user/c_v_r/1900x800'});
+  const {loggedInUser} = useContext(UserContext);
+
   useEffect(() => { getUserInfo() }, []);
   const getUserInfo = async () => {
     const resp = await fetch(GITHUB_PROFILE_URL);
@@ -22,6 +24,7 @@ const User = (props) => {
         <h2>Name: {userInfo.name}</h2>
         <h3>Location: {userInfo.location || "Hyderabad"}</h3>
         <h4>Contact: #dathatreyakv</h4>
+        <h4>{loggedInUser}</h4>
       </div>
     </div>
   );
