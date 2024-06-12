@@ -3,12 +3,15 @@ import { RESTAURANTS_DATA_URL } from "../utils/constants";
 import BodyShimmer from "./BodyShimmer";
 // import restaurantsList from "../utils/mockData";
 import RestaurantCard from "./RestaurantCard";
-import {useEffect, useRef, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import checkOnlineStatus from "../utils/checkOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   // let [searchTxt, setSearchTxt] = useState('');
   let searchTxt = useRef('');
+  const {loggedInUser, setUserName} = useContext(UserContext);
+
   let restaurantsList = useRef((() => {console.log("List State Triggered"); return []})());
   const [restaurants , setRestaurants] = useState([]);
   const onlineStatus = checkOnlineStatus();
@@ -44,6 +47,11 @@ const Body = () => {
       </div>
       <div className="ml-2 mb-1">
         <button type="button" className="px-4 py-0.5 m-4 bg-gray-200 rounded-sm" onClick={filterTopRatedRestaurants}>Top rated Restaurants</button>
+      </div>
+
+      <div className="ml-2 mb-1">
+        <label className="font-bold p-2">User name: </label>
+        <input className="border border-solid border-black" type="text" placeholder="Enter UserName" value={loggedInUser} onChange={(e) => {setUserName(e.target.value)}}/>
       </div>
     </div>
     <div className="flex flex-wrap">
