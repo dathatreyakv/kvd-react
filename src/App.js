@@ -6,6 +6,8 @@ import Header from "./components/Header.js";
 import Body from "./components/Body";
 import Error from "./components/Error";
 import UserContext from "./utils/UserContext.js";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
 
 // Chunking
 // Code Splitting
@@ -32,14 +34,16 @@ const AppLayout = () => {
     const data = {name: "Venkata Dathatreya K"};
     setUserName(data.name);
   }, []);
-
+console.log("App.js Rendered.....");
   return (
-    <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
-      <div className="app">
-        <Header/>
-        <Outlet/>
-      </div>
-    </UserContext.Provider>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
+        <div className="app">
+          <Header/>
+          <Outlet/>
+        </div>
+      </UserContext.Provider>
+    </Provider>
   )
 };
 

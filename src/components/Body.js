@@ -6,6 +6,7 @@ import RestaurantCard from "./RestaurantCard";
 import {useContext, useEffect, useRef, useState} from "react";
 import checkOnlineStatus from "../utils/checkOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Body = () => {
   // let [searchTxt, setSearchTxt] = useState('');
@@ -15,6 +16,7 @@ const Body = () => {
   let restaurantsList = useRef((() => {console.log("List State Triggered"); return []})());
   const [restaurants , setRestaurants] = useState([]);
   const onlineStatus = checkOnlineStatus();
+  const cartItems = useSelector((store) => store.cart.items)
 
   function filterRestaurantByName() {
     setRestaurants(restaurantsList.current.filter((restaurant) => restaurant?.info?.name.toLowerCase().includes(searchTxt.current.toLowerCase())) )
@@ -37,7 +39,6 @@ const Body = () => {
 
   // Conditional Rendering
   if(!onlineStatus) return <h3>Please check your internet...</h3>;
-
   return !restaurantsList?.current?.length ? <BodyShimmer/> :
   <div className="body">
     <div className="flex pt-4">
@@ -52,6 +53,10 @@ const Body = () => {
       <div className="ml-2 mb-1">
         <label className="font-bold p-2">User name: </label>
         <input className="border border-solid border-black" type="text" placeholder="Enter UserName" value={loggedInUser} onChange={(e) => {setUserName(e.target.value)}}/>
+      </div>
+
+      <div className="ml-2 mb-1">
+        <span className="font-bold pl-4">Cart Items: {cartItems.length}</span>
       </div>
     </div>
     <div className="flex flex-wrap">

@@ -1,7 +1,13 @@
 import React from 'react'
 import { SWIGGY_ASSET_URL } from '../utils/constants';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../utils/cartSlice';
 
 const ItemList = ({items}) => {
+  const dispatch = useDispatch();
+  function addItemToCart(item) {
+    dispatch(addToCart(item));
+  }
   return (
     <div>{
       items?.map(item => {
@@ -18,7 +24,7 @@ const ItemList = ({items}) => {
             </div>
             <div className='w-3/12 p-4'>
               <div className='absolute text-xs'>
-                <button className='p-2 bg-black text-white shadow-md rounded-lg -mx-2'>Add +</button>
+                <button className='p-2 bg-black text-white shadow-md rounded-lg -mx-2' onClick={() => {addItemToCart(item)}}>Add +</button>
               </div>
               <img src={SWIGGY_ASSET_URL + info?.imageId} className='w-full'/>
             </div>
