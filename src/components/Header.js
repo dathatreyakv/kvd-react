@@ -31,7 +31,7 @@ export default Header = () => {
         <li onClick={onLinkClick}><Link to="/">Home</Link></li>
         <li onClick={onLinkClick}><Link to="/about">About Us</Link></li>
         <li onClick={onLinkClick}><Link to="/contact">Contact Us</Link></li>
-        <li onClick={onLinkClick}>Cart ({cartItems.length} items)</li>
+        <li onClick={onLinkClick}><Link to="/cart">Cart ({cartItems.length} items)</Link></li>
         
         <button className="cursor-pointer bg-gray-400 px-4 py-1" onClick={onBtnClick}>{btnName}</button>
         <li className="font-bold">{loggedInUser}</li>

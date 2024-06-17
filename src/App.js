@@ -18,7 +18,7 @@ import appStore from "./utils/appStore";
 const About = lazy(()=> import("./components/About"));
 const ContactUs = lazy(()=> import("./components/ContactUs"));
 const RestaurantMenu = lazy(()=> import("./components/RestaurantMenu"));
-
+const Cart = lazy(()=> import("./components/Cart"));
 
 const LazyLoadFallback = () => <h1>Loading Loading....</h1>
 const lazyLoadSuspenseWrap = (Component, ...props) => (
@@ -64,6 +64,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: lazyLoadSuspenseWrap(ContactUs)
+      },
+      {
+        path: "/cart",
+        element: lazyLoadSuspenseWrap(Cart)
       },
       {
         path: "/restaurants/:resId",
