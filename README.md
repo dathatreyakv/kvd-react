@@ -111,3 +111,21 @@ We have 2 types of import & export process
 
 * 'react-router-dom's Link:
     > anchor(\<a href=""\>) tag will reload the whole page again to the given href link, where 'react-router-dom's Link component(\<Link to=""\>) will refresh the virtual DOM and load the changed content by changing the URL without refreshing the whole page.
+
+## Types of testing (devloper)
+
+- Unit Testing
+- Integration Testing
+- End to End Testing - e2e testing
+
+## Setting up Testing in our app
+- Install React Testing Library
+- Installed jest
+- Installed Babel dependencies
+- Configure Babel
+- Configure Parcel Config file to disable default babel transpilation
+- Jest - npx jest --init
+- Install jsdom library
+- Install @babel/preset-react - to make JSX work in test cases
+- Include @babel/preset-react inside my babel config
+- npm i -D @testing-library/jest-dom
