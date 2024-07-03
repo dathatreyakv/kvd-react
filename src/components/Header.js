@@ -20,7 +20,6 @@ export default Header = () => {
     counterRef.current+=1;
     console.log(counterRef.current);
   }
-  console.log("Healder Rendered");
   return <div className="flex justify-between bg-pink-100 shadow-lg sm:bg-green-100 lg:bg-blue-100">
     <div>
       <img className="w-28 h-fit" src={LOGO_URL}/>
